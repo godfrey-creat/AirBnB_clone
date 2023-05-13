@@ -8,14 +8,19 @@ from uuid import uuid4
 
 from datetime import datetime
 
+
+
+
+
 class BaseModel:
 
-    """Representing the BaseModel."""
+    """Represents BaseModel."""
+
 
 
     def __init__(self, *args, **kwargs):
 
-        """Initializing the constructor
+        """Initializing constructor
 
         Args:
 
@@ -50,27 +55,30 @@ class BaseModel:
             models.storage.new(self)
 
 
+
     def save(self):
 
-        """Updating the updated_at with the current datetime."""
+        """Updating updated_at with the current datetime."""
 
         self.updated_at = datetime.today()
 
         models.storage.save()
 
 
+
     def __str__(self):
 
-        """The __str__ method for BaseModel"""
+        """__str__ method for BaseModel"""
 
         class_name = self.__class__.__name__
 
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
 
+
     def to_dict(self):
 
-        """This returns a dictionary containing all keys/values
+        """returning a dictionary containing all keys/values
 
            of __dict__ of the instance
 
@@ -85,3 +93,9 @@ class BaseModel:
         instance_dict["__class__"] = self.__class__.__name__
 
         return instance_dict
+
+
+
+
+
+
