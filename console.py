@@ -25,6 +25,9 @@ from models.amenity import Amenity
 from models.review import Review
 
 
+
+
+
 def parse(arg):
 
     curly_braces = re.search(r"\{(.*?)\}", arg)
@@ -58,15 +61,20 @@ def parse(arg):
         return retl
 
 
+
+
+
 class HBNBCommand(cmd.Cmd):
 
-    """Defining the HBnB command interpreter.
+    """Defines the HolbertonBnB command interpreter.
 
     Attributes:
 
         prompt (str): The command prompt.
 
     """
+
+
 
     prompt = "(hbnb) "
 
@@ -88,11 +96,15 @@ class HBNBCommand(cmd.Cmd):
 
     }
 
+
+
     def emptyline(self):
 
-        """This Does nothing upon receiving an empty line."""
+        """Do nothing upon receiving an empty line."""
 
         pass
+
+
 
     def default(self, arg):
 
@@ -134,6 +146,8 @@ class HBNBCommand(cmd.Cmd):
 
         return False
 
+
+
     def do_quit(self, arg):
 
         """Quit command to exit the program."""
@@ -149,6 +163,8 @@ class HBNBCommand(cmd.Cmd):
         print("")
 
         return True
+
+
 
     def do_create(self, arg):
 
@@ -173,6 +189,8 @@ class HBNBCommand(cmd.Cmd):
             print(eval(argl[0])().id)
 
             storage.save()
+
+
 
     def do_show(self, arg):
 
@@ -206,6 +224,8 @@ class HBNBCommand(cmd.Cmd):
 
             print(objdict["{}.{}".format(argl[0], argl[1])])
 
+
+
     def do_destroy(self, arg):
 
         """Usage: destroy <class> <id> or <class>.destroy(<id>)
@@ -238,6 +258,8 @@ class HBNBCommand(cmd.Cmd):
 
             storage.save()
 
+
+
     def do_all(self, arg):
 
         """Usage: all or all <class> or <class>.all()
@@ -268,6 +290,8 @@ class HBNBCommand(cmd.Cmd):
 
             print(objl)
 
+
+
     def do_count(self, arg):
 
         """Usage: count <class> or <class>.count()
@@ -286,6 +310,8 @@ class HBNBCommand(cmd.Cmd):
 
         print(count)
 
+
+
     def do_update(self, arg):
 
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
@@ -301,6 +327,8 @@ class HBNBCommand(cmd.Cmd):
         argl = parse(arg)
 
         objdict = storage.all()
+
+
 
         if len(argl) == 0:
 
@@ -379,6 +407,9 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = v
 
         storage.save()
+
+
+
 
 
 if __name__ == "__main__":
